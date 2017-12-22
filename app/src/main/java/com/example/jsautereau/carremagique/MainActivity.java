@@ -9,7 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -33,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
     Integer nb[] = new Integer[]{1,2,3,4,5,6,7,8,9};
 
     // Resultat content
+<<<<<<< HEAD
     ArrayList<Integer> resultatContent = new ArrayList<Integer>();
+=======
+    int resultatContent[] = new int[]{1};
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
 
     Button btnContinue, btnSubmit, btnNewGame, btnExitGame;
 
@@ -65,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.button2);
         btnNewGame = findViewById(R.id.button3);
         btnExitGame = findViewById(R.id.button4);
+<<<<<<< HEAD
     }
 
     protected void onResume() {
@@ -74,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
         if(resultatContent.size() > 0) {
             for(int i = 0; i < resultatContent.size(); i++) {
                 resultat[i].setText(""+resultatContent.get(i));
+=======
+
+        // Au début on genere des nouveaux résultats
+        if(resultatContent.length > 0) {
+            for(int i = 0; i < resultat.length; i++) {
+                resultat[i].setText(""+resultatContent[i]);
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
             }
         }
         else {
@@ -83,14 +98,22 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onSaveInstanceState(Bundle donnees) {
 
+<<<<<<< HEAD
         donnees.putIntegerArrayList("appels", resultatContent);
+=======
+        donnees.putIntArray("resultatContent", resultatContent);
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
         super.onSaveInstanceState(donnees);
     }
 
     protected void onRestoreInstanceState(Bundle donnees) {
 
         super.onRestoreInstanceState(donnees);
+<<<<<<< HEAD
         resultatContent = donnees.getIntegerArrayList("appels");
+=======
+        resultatContent = donnees.getIntArray("resultatContent");
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
     }
 
     public boolean isCorrect() {
@@ -165,9 +188,12 @@ public class MainActivity extends AppCompatActivity {
     // Fonction permettant de générer des résultats aléatoires parmi les valeurs du carré magique
     public void genererResultat(int level) {
 
+<<<<<<< HEAD
         // on vite notre liste dès le début
         resultatContent.removeAll(resultatContent);
 
+=======
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
         long seed = System.nanoTime();
         Collections.shuffle(Arrays.asList(nb), new Random(seed));
 
@@ -181,14 +207,22 @@ public class MainActivity extends AppCompatActivity {
                 calcul = nb[0+ligneSuivante]+nb[1+ligneSuivante]+nb[2+ligneSuivante];
 
                 resultat[i].setText(""+calcul);
+<<<<<<< HEAD
                 resultatContent.add(calcul);
+=======
+                resultatContent[i] = calcul;
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
             }
             else {
 
                 calcul = nb[0+colonneSuivante]+nb[3+colonneSuivante]+nb[6+colonneSuivante];
                 colonneSuivante += 1;
                 resultat[i].setText(""+calcul);
+<<<<<<< HEAD
                 resultatContent.add(calcul);
+=======
+                resultatContent[i] = calcul;
+>>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
             }
 
             ligneSuivante += 3;
