@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jsautereau.carremagique.MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="Number 1 to 9 to be used once and only once"
+        />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="7">
+
+        <EditText
+            android:id="@+id/input1"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+" />
+
+        <EditText
+            android:id="@+id/input2"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:text="+"
+            />
+        <EditText
+            android:id="@+id/input3"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:text="="
+            />
+
+        <TextView
+            android:id="@+id/resultat1"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="19"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="+"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <EditText
+            android:id="@+id/input4"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+" />
+
+        <EditText
+            android:id="@+id/input5"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+"
+            />
+
+        <EditText
+            android:id="@+id/input6"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="="
+            />
+
+        <TextView
+            android:id="@+id/resultat2"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="19"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <EditText
+            android:id="@+id/input7"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+" />
+
+        <EditText
+            android:id="@+id/input8"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="+"
+            />
+
+        <EditText
+            android:id="@+id/input9"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/default_answer"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="="
+            />
+
+        <TextView
+            android:id="@+id/resultat3"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="19"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="="
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="="
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="="
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/resultat4"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="19"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/resultat5"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="19"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/resultat6"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="19"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="2">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_gravity="center"
+            android:onClick="testCalcul"
+            android:text="Submit">
+        </Button>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_gravity="center"
+            android:text="Continue?"
+            android:onClick="doContinue"
+            android:enabled="false">
+        </Button>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_gravity="center"
+            android:text="New Game"
+            android:onClick="newGame"
+            >
+        </Button>
+
+        <Button
+            android:id="@+id/button4"
+            android:onClick="exitGame"
+            android:layout_gravity="center"
+            android:text="Exit Game">
+        </Button>
+
+    </GridLayout>
+
+</LinearLayout>
