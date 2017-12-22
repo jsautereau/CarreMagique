@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Integer nb[] = new Integer[]{1,2,3,4,5,6,7,8,9};
 
     // Resultat content
-    int resultatContent[] = new int[]{1};
+    ArrayList<Integer> resultatContent = new ArrayList<Integer>();
 
     Button btnContinue, btnSubmit, btnNewGame, btnExitGame;
 
@@ -64,11 +65,15 @@ public class MainActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.button2);
         btnNewGame = findViewById(R.id.button3);
         btnExitGame = findViewById(R.id.button4);
+    }
 
-        // Au début on genere des nouveaux résultats
-        if(resultatContent.length > 0) {
-            for(int i = 0; i < resultat.length; i++) {
-                resultat[i].setText(""+resultatContent[i]);
+    protected void onResume() {
+        super.onResume();
+
+        // on met à jour nos résultats tant que l'utilisateur n'as pas cliqué sur "Nouveau Jeu"
+        if(resultatContent.size() > 0) {
+            for(int i = 0; i < resultatContent.size(); i++) {
+                resultat[i].setText(""+resultatContent.get(i));
             }
         }
         else {
@@ -78,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onSaveInstanceState(Bundle donnees) {
 
-        donnees.putIntArray("resultatContent", resultatContent);
+        donnees.putIntegerArrayList("appels", resultatContent);
         super.onSaveInstanceState(donnees);
     }
 
     protected void onRestoreInstanceState(Bundle donnees) {
 
         super.onRestoreInstanceState(donnees);
-        resultatContent = donnees.getIntArray("resultatContent");
+        resultatContent = donnees.getIntegerArrayList("appels");
     }
 
     public boolean isCorrect() {
@@ -160,6 +165,9 @@ public class MainActivity extends AppCompatActivity {
     // Fonction permettant de générer des résultats aléatoires parmi les valeurs du carré magique
     public void genererResultat(int level) {
 
+        // on vite notre liste dès le début
+        resultatContent.removeAll(resultatContent);
+
         long seed = System.nanoTime();
         Collections.shuffle(Arrays.asList(nb), new Random(seed));
 
@@ -173,14 +181,14 @@ public class MainActivity extends AppCompatActivity {
                 calcul = nb[0+ligneSuivante]+nb[1+ligneSuivante]+nb[2+ligneSuivante];
 
                 resultat[i].setText(""+calcul);
-                resultatContent[i] = calcul;
+                resultatContent.add(calcul);
             }
             else {
 
                 calcul = nb[0+colonneSuivante]+nb[3+colonneSuivante]+nb[6+colonneSuivante];
                 colonneSuivante += 1;
                 resultat[i].setText(""+calcul);
-                resultatContent[i] = calcul;
+                resultatContent.add(calcul);
             }
 
             ligneSuivante += 3;
