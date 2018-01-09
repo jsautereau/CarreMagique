@@ -50,7 +50,7 @@ public class ExitGame extends AppCompatActivity {
         val = i.getStringExtra("niveau_choisi");
         chronoValue = i.getStringExtra("time_resolv");
 
-        sp = getPreferences(MODE_PRIVATE); editor = sp.edit();
+        sp = getSharedPreferences("ExitGame", MODE_PRIVATE); editor = sp.edit();
 
         time.setText("TIME " + chronoValue);
         mode.setText("MODE " + val);

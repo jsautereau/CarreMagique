@@ -31,7 +31,9 @@ public class Home extends AppCompatActivity {
     }
 
     public void afficheScore(View v) {
-        //TODO
+
+        Intent intent = new Intent(this, ScoreTab.class);
+        startActivity(intent);
     }
 
     public void exitGame(View v) {
