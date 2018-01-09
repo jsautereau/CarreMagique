@@ -1,21 +1,24 @@
-package com.example.jsautereau.carremagique;
+package com.example.juliensautereau.carremagique;
 
+import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-=======
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     //TextView resultat1, resultat2, resultat3, resultat4, resultat5, resultat6;
     //EditText input1, input2, input3, input4, input5, input6, input7, input8, input9;
+
+    List<Integer> myList = new ArrayList<Integer>();
 
     TextView resultat[] = new TextView[6]; // Résultats
 
@@ -35,15 +40,22 @@ public class MainActivity extends AppCompatActivity {
     // Nb de 1 à 9
     Integer nb[] = new Integer[]{1,2,3,4,5,6,7,8,9};
 
+    ArrayList<Integer> positionBlocked = new ArrayList<Integer>();
+
+    static int blockedInput = 6;
+
+    int level = 1;
+    String levelString = "FACILE";
     // Resultat content
-<<<<<<< HEAD
     ArrayList<Integer> resultatContent = new ArrayList<Integer>();
-=======
-    int resultatContent[] = new int[]{1};
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
+
+    ArrayList<String> textFieldContent = new ArrayList<String>();
+  //  int resultatContent[] = new int[]{1};
+
 
     Button btnContinue, btnSubmit, btnNewGame, btnExitGame;
 
+    Chronometer chrono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,56 +84,80 @@ public class MainActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.button2);
         btnNewGame = findViewById(R.id.button3);
         btnExitGame = findViewById(R.id.button4);
-<<<<<<< HEAD
+
+        chrono = findViewById(R.id.chronometre);
+
+        Intent i = getIntent();
+
+        String val = i.getStringExtra("niveau_choisi");
+
+        switch(val) {
+            case "FACILE": level = 1; levelString = val; blockedInput = 6; break;
+            case "MOYEN": level = 2; levelString = val; blockedInput = 3; break;
+            case "DIFFICILE": level = 3; levelString = val; blockedInput = 0; break;
+            default: level = 1; levelString = "FACILE"; blockedInput = 6; break;
+        }
+
     }
 
     protected void onResume() {
         super.onResume();
 
         // on met à jour nos résultats tant que l'utilisateur n'as pas cliqué sur "Nouveau Jeu"
-        if(resultatContent.size() > 0) {
-            for(int i = 0; i < resultatContent.size(); i++) {
-                resultat[i].setText(""+resultatContent.get(i));
-=======
-
-        // Au début on genere des nouveaux résultats
-        if(resultatContent.length > 0) {
-            for(int i = 0; i < resultat.length; i++) {
-                resultat[i].setText(""+resultatContent[i]);
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
+        if (resultatContent.size() > 0) {
+            for (int i = 0; i < resultatContent.size(); i++) {
+                resultat[i].setText("" + resultatContent.get(i));
             }
+            if(textFieldContent.size() > 0) {
+                for (int i = 0; i < textFieldContent.size(); i++) {
+                    input[i].setText("" + textFieldContent.get(i));
+                }
+            }
+
+            for(int i = 0; i < input.length; i++) {
+
+                if (positionBlocked.contains(i)) {
+
+                    input[i].setEnabled(false);
+                }
+            }
+
+            chrono.stop();
+            chrono.start();
         }
-        else {
-            genererResultat(1);
+        else
+        {
+            genererResultat(level);
+            chrono.start();
         }
+
     }
 
     protected void onSaveInstanceState(Bundle donnees) {
 
-<<<<<<< HEAD
         donnees.putIntegerArrayList("appels", resultatContent);
-=======
-        donnees.putIntArray("resultatContent", resultatContent);
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
+        donnees.putStringArrayList("saisie_text", textFieldContent);
+        donnees.putIntegerArrayList("positionBlocked", positionBlocked);
+        donnees.putLong("chrono_value", chrono.getBase());
+        //donnees.putIntArray("resultatContent", resultatContent);
         super.onSaveInstanceState(donnees);
     }
 
     protected void onRestoreInstanceState(Bundle donnees) {
 
         super.onRestoreInstanceState(donnees);
-<<<<<<< HEAD
         resultatContent = donnees.getIntegerArrayList("appels");
-=======
-        resultatContent = donnees.getIntArray("resultatContent");
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
+        textFieldContent = donnees.getStringArrayList("saisie_text");
+        positionBlocked = donnees.getIntegerArrayList("positionBlocked");
+        chrono.setBase(donnees.getLong("chrono_value"));
+        //resultatContent = donnees.getIntArray("resultatContent");
+
     }
 
     public boolean isCorrect() {
 
         boolean valideH = false;
         boolean valideV = false;
-
-        System.out.println(valideH);
 
         for(int i = 0; i < 3; i++) {
 
@@ -134,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 if (j == 2) {
                     if (calculHorizontal == Integer.parseInt(resultat[i].getText().toString())) {
                         valideH = true;
+
                     } else {
                         valideH = false;
                         break;
@@ -155,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 calculVertical += matrice[i][j];
 
                 if (i == 2) {
-                    if (calculVertical == Integer.parseInt(resultat[3+i].getText().toString())) {
+                    if (calculVertical == Integer.parseInt(resultat[3+j].getText().toString())) {
                         valideV = true;
                     } else {
                         valideV = false;
@@ -185,15 +222,57 @@ public class MainActivity extends AppCompatActivity {
         msg.show();
     }
 
+    public void addElement(Integer x) {
+        myList.add(x);
+    }
+
+    public void getRandomInput(Integer[] array) {
+
+        int checkBlocked = 0;
+
+        boolean exitWhile = true;
+
+        if(blockedInput != 0) {
+
+            while (exitWhile) {
+
+                int rnd = new Random().nextInt(array.length);
+
+                if (!myList.contains(rnd) && rnd != 0) {
+
+                    addElement(rnd);
+                    System.out.println(myList);
+                    checkBlocked += 1;
+
+                }
+
+                if (checkBlocked == blockedInput) {
+                    exitWhile = false;
+                }
+
+            }
+
+        }
+
+        for(int i = 0; i < input.length; i++) {
+
+            if(myList.contains(array[i])) {
+                positionBlocked.add(i);
+                input[i].setText(""+array[i]);
+                input[i].setEnabled(false);
+            }
+        }
+    }
+
     // Fonction permettant de générer des résultats aléatoires parmi les valeurs du carré magique
     public void genererResultat(int level) {
 
-<<<<<<< HEAD
         // on vite notre liste dès le début
         resultatContent.removeAll(resultatContent);
+        textFieldContent.removeAll(textFieldContent);
+        myList.removeAll(myList);
 
-=======
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
+
         long seed = System.nanoTime();
         Collections.shuffle(Arrays.asList(nb), new Random(seed));
 
@@ -207,36 +286,38 @@ public class MainActivity extends AppCompatActivity {
                 calcul = nb[0+ligneSuivante]+nb[1+ligneSuivante]+nb[2+ligneSuivante];
 
                 resultat[i].setText(""+calcul);
-<<<<<<< HEAD
                 resultatContent.add(calcul);
-=======
-                resultatContent[i] = calcul;
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
+          //      resultatContent[i] = calcul;
             }
             else {
 
                 calcul = nb[0+colonneSuivante]+nb[3+colonneSuivante]+nb[6+colonneSuivante];
                 colonneSuivante += 1;
                 resultat[i].setText(""+calcul);
-<<<<<<< HEAD
                 resultatContent.add(calcul);
-=======
-                resultatContent[i] = calcul;
->>>>>>> cbf8d7bdf4c11d0bd8b7431ae8b3f34fb0be8dbb
+            //    resultatContent[i] = calcul;
+
             }
 
             ligneSuivante += 3;
         }
+
+        getRandomInput(nb);
     }
 
     // Nouveau Jeu
     public void newGame(View v) {
 
+        positionBlocked.removeAll(positionBlocked);
         enableMode();
         for(int i = 0; i < input.length; i++) {
             input[i].setText("");
         }
-        genererResultat(1);
+
+        genererResultat(level);
+
+        chrono.setBase(SystemClock.elapsedRealtime());
+        chrono.start();
 
     }
 
@@ -321,7 +402,14 @@ public class MainActivity extends AppCompatActivity {
     public void enableMode() {
 
         for(int i = 0; i < input.length; i++) {
-            input[i].setEnabled(true);
+            if (positionBlocked.contains(i)) {
+
+                input[i].setEnabled(false);
+            }
+            else
+            {
+                input[i].setEnabled(true);
+            }
         }
 
         btnSubmit.setEnabled(true);
@@ -338,9 +426,20 @@ public class MainActivity extends AppCompatActivity {
         this.finish();
     }
 
+    public void storeTextField() {
+
+        for(int i = 0; i < input.length; i++) {
+
+            textFieldContent.add(input[i].getText().toString());
+        }
+
+    }
+
     public void testCalcul( View v) {
 
         ajoutMatrice();
+
+        storeTextField();
 
         if(!verifMatrice()){
             afficherToast("Merci de renseigner toutes les cases SVP !");
@@ -350,8 +449,13 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             if(isCorrect()) {
+                chrono.stop();  // On arrête le chronomètre
                 afficherToast("It's correct");
-                modeResume();
+                this.finish();
+                Intent endGame = new Intent(this, ExitGame.class);
+                endGame.putExtra("niveau_choisi", levelString);
+                endGame.putExtra("time_resolv", chrono.getText().toString());
+                startActivityForResult(endGame, RESULT_OK);
             }
             else
             {
@@ -359,6 +463,16 @@ public class MainActivity extends AppCompatActivity {
                 modeResume();
             }
 
+        }
+    }
+
+    protected void onActivityForResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RESULT_OK){
+            if (resultCode == RESULT_OK){
+
+                levelString = data.getExtras().getString("niveau_choisi");
+                chrono.setText(data.getExtras().getString("time_resolv"));
+            }
         }
     }
 }

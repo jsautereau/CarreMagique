@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.juliensautereau.carremagique.ExitGame">
+
+    <TextView
+        android:id="@+id/timeToSolv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:text="TIME" />
+
+    <TextView
+        android:id="@+id/modeGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:text="MODE" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="YOUR NICKNAME" />
+
+    <EditText
+        android:id="@+id/nicknameZone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your nickname"/>
+
+    <Button
+        android:id="@+id/registerPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enregistrer"
+        android:onClick="save"
+        />
+
+    <Button
+        android:id="@+id/lectureFichier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lire fichier"
+        android:onClick="read"
+        />
+
+    <Button
+        android:id="@+id/quitterApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quitter"
+        android:onClick="goToHome"/>
+
+    <TextView
+        android:id="@+id/etat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/dataRead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

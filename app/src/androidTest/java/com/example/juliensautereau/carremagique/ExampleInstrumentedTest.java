@@ -1,4 +1,4 @@
-package com.example.jsautereau.carremagique;
+package com.example.juliensautereau.carremagique;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.jsautereau.carremagique", appContext.getPackageName());
+        assertEquals("com.example.juliensautereau.carremagique", appContext.getPackageName());
     }
 }

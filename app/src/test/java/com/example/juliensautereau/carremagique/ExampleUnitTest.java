@@ -1,4 +1,4 @@
-package com.example.jsautereau.carremagique;
+package com.example.juliensautereau.carremagique;
 
 import org.junit.Test;
 
