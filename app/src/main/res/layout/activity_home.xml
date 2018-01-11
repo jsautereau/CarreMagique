@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
+        android:textSize="40dp"
         android:text="Menu Principal"
         />
 
@@ -33,6 +34,13 @@
         />
 
     <Button
+        android:id="@+id/rulesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="accessToRules"
+        android:text="Regles du jeu"/>
+
+    <Button
         android:id="@+id/quitGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +48,5 @@
         android:onClick="exitGame"
         android:text="Exit game"
         />
-
-
 
 </LinearLayout>

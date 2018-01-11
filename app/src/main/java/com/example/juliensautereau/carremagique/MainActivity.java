@@ -25,9 +25,6 @@ import java.util.TreeSet;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TextView resultat1, resultat2, resultat3, resultat4, resultat5, resultat6;
-    //EditText input1, input2, input3, input4, input5, input6, input7, input8, input9;
-
     List<Integer> myList = new ArrayList<Integer>();
 
     TextView resultat[] = new TextView[6]; // Résultats
@@ -46,12 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
     int level = 1;
     String levelString = "FACILE";
+
     // Resultat content
     ArrayList<Integer> resultatContent = new ArrayList<Integer>();
 
     ArrayList<String> textFieldContent = new ArrayList<String>();
-  //  int resultatContent[] = new int[]{1};
 
+    long timer;
 
     Button btnContinue, btnSubmit, btnNewGame, btnExitGame;
 
@@ -100,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Méthode onResume()
     protected void onResume() {
         super.onResume();
 
@@ -133,16 +132,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Méthode permettant de sauvegarder l'instance des différents états
     protected void onSaveInstanceState(Bundle donnees) {
 
         donnees.putIntegerArrayList("appels", resultatContent);
         donnees.putStringArrayList("saisie_text", textFieldContent);
         donnees.putIntegerArrayList("positionBlocked", positionBlocked);
         donnees.putLong("chrono_value", chrono.getBase());
-        //donnees.putIntArray("resultatContent", resultatContent);
         super.onSaveInstanceState(donnees);
     }
 
+    // Méthode permettant de restaurer l'instance des différents états
     protected void onRestoreInstanceState(Bundle donnees) {
 
         super.onRestoreInstanceState(donnees);
@@ -150,10 +150,10 @@ public class MainActivity extends AppCompatActivity {
         textFieldContent = donnees.getStringArrayList("saisie_text");
         positionBlocked = donnees.getIntegerArrayList("positionBlocked");
         chrono.setBase(donnees.getLong("chrono_value"));
-        //resultatContent = donnees.getIntArray("resultatContent");
 
     }
 
+    // Méthode de vérifier que le résultat est correct à l'horizontal comme à la vertical
     public boolean isCorrect() {
 
         boolean valideH = false;
@@ -216,16 +216,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Méthode permettant d'afficher un message à l'utilisateur
     protected void afficherToast(String mesg) {
         Toast msg = Toast.makeText(this, mesg, Toast.LENGTH_SHORT);
         msg.setGravity(Gravity.CENTER, 0, 0);
         msg.show();
     }
 
+    // Fonction permettant d'ajouter des élements dans ma liste d'entier
     public void addElement(Integer x) {
         myList.add(x);
     }
 
+    // Fonction permettant de générer des cases aléatoires
     public void getRandomInput(Integer[] array) {
 
         int checkBlocked = 0;
@@ -321,6 +324,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Méthode permettant de mettre à jour la matrice selon les données reçues
     public void ajoutMatrice() {
 
         int incr = 0;
@@ -350,6 +354,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Méthode permettant de vérifier la matrice
     public boolean verifMatrice() {
 
         boolean valide = true;
@@ -366,6 +371,7 @@ public class MainActivity extends AppCompatActivity {
         return valide;
     }
 
+    // Méthode permettant de vérifier que la saisie comporte que des chiffres uniques de 1 à 9
     public boolean isUnique() {
 
         boolean valide = true;
@@ -388,8 +394,16 @@ public class MainActivity extends AppCompatActivity {
         return valide;
     }
 
+    // Méthode permettant d'empêcher l'utilisateur de faire un précédent avec le bouton
+    public void onBackPressed() {
+        // ne rien faire
+    }
+
+    // Mode resume quand l'utilisateur clique sur "Submit"
     public void modeResume() {
 
+        timer = SystemClock.elapsedRealtime();
+        chrono.stop();
         btnContinue.setEnabled(true);
 
         for(int i = 0; i < input.length; i++) {
@@ -399,6 +413,7 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit.setEnabled(false);
     }
 
+    // Mode enable permettant de réactiver les boutons et les cases
     public void enableMode() {
 
         for(int i = 0; i < input.length; i++) {
@@ -414,18 +429,24 @@ public class MainActivity extends AppCompatActivity {
 
         btnSubmit.setEnabled(true);
         btnContinue.setEnabled(false);
+
+        chrono.setBase(chrono.getBase() + SystemClock.elapsedRealtime() - timer);
+        chrono.start();
     }
 
+    // Méthode permettant de continuer la partie
     public void doContinue(View v) {
 
         enableMode();
     }
 
+    // Méthode permettant de quitter le jeu et revenir au menu principal
     public void exitGame(View v) {
 
         this.finish();
     }
 
+    // Méthode permettant de stocker les différents inputs dans une liste
     public void storeTextField() {
 
         for(int i = 0; i < input.length; i++) {
@@ -435,6 +456,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Méthode globale permettant de tester le calcul
     public void testCalcul( View v) {
 
         ajoutMatrice();
@@ -466,6 +488,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Méthode permettant de recevoir une validition de la requête reçu concernant un Intent père
     protected void onActivityForResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RESULT_OK){
             if (resultCode == RESULT_OK){

@@ -2,26 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:layout_height="fill_parent"
     tools:context="com.example.juliensautereau.carremagique.ExitGame">
 
-    <TextView
-        android:id="@+id/timeToSolv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
         android:gravity="center"
-        android:textSize="50dp"
-        android:text="TIME" />
+        android:background="#000000"
+        android:textSize="30dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/modeGame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/timeToSolv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="50dp"
+            android:textColor="#FFFFFF"
+            android:text="TIME" />
+
+        <TextView
+            android:id="@+id/modeGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="50dp"
+            android:textColor="#FFFFFF"
+            android:text="MODE" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="50dp"
-        android:text="MODE" />
+        android:layout_weight="0.5"
+        android:background="#CCCCCC"
+        android:orientation="vertical"
+        >
 
     <TextView
         android:layout_width="match_parent"
@@ -59,5 +83,7 @@
         android:id="@+id/dataRead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </LinearLayout>

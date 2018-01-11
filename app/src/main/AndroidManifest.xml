@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ExitGame"></activity>
-        <activity android:name=".ScoreTab"></activity>
+        <activity android:name=".ScoreTab" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

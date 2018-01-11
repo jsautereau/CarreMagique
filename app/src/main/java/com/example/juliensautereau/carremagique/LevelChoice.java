@@ -13,14 +13,19 @@ import android.widget.Toast;
 
 public class LevelChoice extends AppCompatActivity {
 
+    // TextView : Title de l'Intent
     TextView tv;
 
+    // Choix du spinner
     String[] level={"<Choisir le niveau>", "FACILE", "MOYEN", "DIFFICILE"};
-    //-- Drop Down REGION LIST
+
+    // Drop Down
     Spinner spinner;
 
+    // Level Selected
     String levelSelected = "";
 
+    // Bouton envoyer
     Button buttonSend;
 
     @Override
@@ -39,6 +44,7 @@ public class LevelChoice extends AppCompatActivity {
 
     }
 
+    // Méthode permettant de choisir le niveau du joueur
     public void sendLevel(View v) {
 
         levelSelected = spinner.getSelectedItem().toString();
@@ -55,11 +61,13 @@ public class LevelChoice extends AppCompatActivity {
 
     }
 
+    // Méthode permettant de faire un retour à la page Home
     public void backPage(View v) {
 
         this.finish();
     }
 
+    // Méthode permettant de recevoir une validition de la requête reçu concernant un Intent père
     protected void onActivityForResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RESULT_OK){
             if (resultCode == RESULT_OK){
